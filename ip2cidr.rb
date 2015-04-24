@@ -144,7 +144,7 @@ while input_count < 2
 
   if user_input.valid? == false
     input_count -= 1
-  	p "Please input a valid IP Address"
+  	p Please input a valid IP Address
   else
     iprange << user_input.ip_tobinary
   end
