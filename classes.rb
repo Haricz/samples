@@ -50,7 +50,7 @@ end
 
 def IPtoCIDR(iplist)
   cidrlist = []
-  powerlist = [1,2,4,8,16,32,64,128]
+  powerlist = Array.new(32) { | n | n = 2**n }
   cidr_x = 0
   cidr_y = 0
 
@@ -70,7 +70,7 @@ def IPtoCIDR(iplist)
       counter = index
       ip1 = iplist[index]
       counter = index + 2**(ip1.reverse.index('1'))
-
+      puts remaining
       while remaining - powerlist[i]  >=  0 #test condition
         i+= 1
       end
