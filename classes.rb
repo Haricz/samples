@@ -65,7 +65,8 @@ def IPtoCIDR(iplist)
     if iplist[index][-2..-1].to_i == 0 
       counter = index
       ip1 = iplist[index]
-        while index < counter + 3 && index < length - 1
+      counter = index + 2**(ip1.reverse.index('1'))
+        while index < counter - 1 && index < length - 1
           index += 1 
         end
       ip2 = iplist[index] 
