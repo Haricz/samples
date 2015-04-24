@@ -50,12 +50,14 @@ end
 
 def IPtoCIDR(iplist)
   cidrlist = []
+  powerlist = [1,2,4,8,16,32,64,128]
   cidr_x = 0
   cidr_y = 0
 
   ip1 = ""
   ip2 = ""
 
+  i = 0
   index = 0
   counter = 0
 
@@ -63,12 +65,21 @@ def IPtoCIDR(iplist)
 
   while index < length
     if iplist[index][-2..-1].to_i == 0 
+      i = 0
+      remaining = length - index
       counter = index
       ip1 = iplist[index]
       counter = index + 2**(ip1.reverse.index('1'))
-        while index < counter - 1 && index < length - 1
-          index += 1 
-        end
+
+      while remaining - powerlist[i]  >=  0 #test condition
+        i+= 1
+      end
+      
+      remaining = index + powerlist[i-1]
+      
+      while index < counter - 1 && index < length - 1 && index < remaining - 1
+        index += 1 
+      end
       ip2 = iplist[index] 
       cidrlist << getprefix(ip1, ip2)
       index += 1
