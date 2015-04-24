@@ -70,7 +70,6 @@ def IPtoCIDR(iplist)
       counter = index
       ip1 = iplist[index]
       counter = index + 2**(ip1.reverse.index('1'))
-      puts remaining
       while remaining - powerlist[i]  >=  0 #test condition
         i+= 1
       end
